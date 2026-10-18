@@ -169,6 +169,8 @@
 "Show icon instead of widgets" = "Afficher l’icône à la place des widgets";
 "Combined details" = "Détails combinés";
 "Spacing" = "Espacement";
+"Left spacing" = "Espacement gauche";
+"Right spacing" = "Espacement droit";
 "Choose file" = "Choisir un fichier"; // gemma4:31b
 "Stress tests" = "Tests de stress"; // gemma4:31b
 "Keep the menubar items position" = "Conserver la position des éléments de la barre de menu"; // qwen3.8:27b

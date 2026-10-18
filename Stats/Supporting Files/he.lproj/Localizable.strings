@@ -169,6 +169,8 @@
 "Show icon instead of widgets" = "הצגת סמל במקום ווידג׳טים";
 "Combined details" = "פרטים משולבים"; // translategemma:4b
 "Spacing" = "רווח"; // gemma4:31b
+"Left spacing" = "ריווח משמאל";
+"Right spacing" = "ריווח מימין";
 "Choose file" = "בחר קובץ"; // translategemma:4b
 "Stress tests" = "בדיקות מאמץ"; // gemma4:31b
 "Keep the menubar items position" = "לשמור על מיקום פריטי סרגל התפריט"; // qwen3.8:27b

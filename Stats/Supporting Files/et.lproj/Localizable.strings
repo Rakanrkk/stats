@@ -169,6 +169,8 @@
 "Show icon instead of widgets" = "Näita vidinate asemel ikooni";
 "Combined details" = "Ühendatud andmed";
 "Spacing" = "Vahekaugus";
+"Left spacing" = "Vahekaugus vasakul";
+"Right spacing" = "Vahekaugus paremal";
 "Choose file" = "Vali fail";
 "Stress tests" = "Stressitestid";
 "Keep the menubar items position" = "Hoida menüüriba elementide asukohta"; // qwen3.8:27b

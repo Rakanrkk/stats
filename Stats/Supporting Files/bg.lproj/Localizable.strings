@@ -169,6 +169,8 @@
 "Show icon instead of widgets" = "Показване на икона вместо уиджети";
 "Combined details" = "Комбинирани подробности"; // gemma4:31b
 "Spacing" = "Интервал"; // gemma4:31b
+"Left spacing" = "Интервал отляво";
+"Right spacing" = "Интервал отдясно";
 "Choose file" = "Изберете файл"; // translategemma:4b
 "Stress tests" = "Стрес тестове"; // gemma4:31b
 "Keep the menubar items position" = "Запази позицията на елементите на лентата на менюто"; // qwen3.8:27b

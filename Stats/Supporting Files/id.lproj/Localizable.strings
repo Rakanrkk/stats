@@ -169,6 +169,8 @@
 "Show icon instead of widgets" = "Tampilkan ikon sebagai pengganti widget";
 "Combined details" = "Detail gabungan"; // gemma4:31b
 "Spacing" = "Jarak"; // translategemma:4b
+"Left spacing" = "Jarak kiri";
+"Right spacing" = "Jarak kanan";
 "Choose file" = "Pilih file"; // translategemma:4b
 "Stress tests" = "Uji stres"; // gemma4:31b
 "Keep the menubar items position" = "Pertahankan posisi item menubar"; // qwen3.8:27b

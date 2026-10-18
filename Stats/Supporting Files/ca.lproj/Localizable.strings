@@ -169,6 +169,8 @@
 "Show icon instead of widgets" = "Mostra la icona en lloc dels ginys";
 "Combined details" = "Detalls combinats";
 "Spacing" = "Espaiat";
+"Left spacing" = "Espaiat esquerre";
+"Right spacing" = "Espaiat dret";
 "Choose file" = "Tria el fitxer"; // gemma4:31b
 "Stress tests" = "Proves d'estress"; // gemma4:31b
 "Keep the menubar items position" = "Mantenir la posició dels elements de la barra de menús"; // qwen3.8:27b

@@ -169,6 +169,8 @@
 "Show icon instead of widgets" = "Ikon megjelenítése widgetek helyett";
 "Combined details" = "Kombinált részletek"; // gemma4:31b
 "Spacing" = "Helyköz";
+"Left spacing" = "Bal helyköz";
+"Right spacing" = "Jobb helyköz";
 "Choose file" = "Fájl választása"; // gemma4:31b
 "Stress tests" = "Terhelési tesztek"; // gemma4:31b
 "Keep the menubar items position" = "Menüsáv-elemek pozíciójának megtartása"; // qwen3.8:27b

@@ -169,6 +169,8 @@
 "Show icon instead of widgets" = "Widget’lar yerine simge göster";
 "Combined details" = "Birleşik ayrıntılar";
 "Spacing" = "Aralık";
+"Left spacing" = "Sol boşluk";
+"Right spacing" = "Sağ boşluk";
 "Choose file" = "Dosya seç";
 "Stress tests" = "Stres testleri";
 "Keep the menubar items position" = "Menü çubuğu öğelerinin konumunu koru"; // qwen3.8:27b

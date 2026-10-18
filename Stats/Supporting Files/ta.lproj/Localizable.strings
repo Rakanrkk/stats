@@ -169,6 +169,8 @@
 "Show icon instead of widgets" = "விட்ஜெட்டுகளுக்குப் பதிலாக ஐகானைக் காட்டு";
 "Combined details" = "ஒன்றிணைக்கப்பட்ட விவரங்கள்";
 "Spacing" = "விடைவெளி";
+"Left spacing" = "இடது இடைவெளி";
+"Right spacing" = "வலது இடைவெளி";
 "Choose file" = "கோப்பைத் தேர்ந்தெடு";
 "Stress tests" = "சுமை சோதனைகள்";
 "Keep the menubar items position" = "மெனுவார் பொருட்களின் நிலையை வைத்திருக்க"; // qwen3.8:27b

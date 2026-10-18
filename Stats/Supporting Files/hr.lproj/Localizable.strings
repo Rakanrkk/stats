@@ -169,6 +169,8 @@
 "Show icon instead of widgets" = "Prikaži ikonu umjesto widgeta";
 "Combined details" = "Kombinirani detalji"; // gemma4:31b
 "Spacing" = "Razmak"; // translategemma:4b
+"Left spacing" = "Razmak lijevo";
+"Right spacing" = "Razmak desno";
 "Choose file" = "Odaberi datoteku"; // gemma4:31b
 "Stress tests" = "Stres-testovi"; // gemma4:31b
 "Keep the menubar items position" = "Zadrži poziciju stavki trake izbornika"; // qwen3.8:27b

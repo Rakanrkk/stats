@@ -73,6 +73,14 @@ public func combinedModulesSpacingValue(from value: String) -> Double? {
     return spacing
 }
 
+// total width of the combined view after applying the outer (left/right) spacing;
+// nil means the values cannot produce a usable frame and the plain layout must be kept
+public func combinedModulesOuterWidth(baseWidth: CGFloat, left: CGFloat, right: CGFloat) -> CGFloat? {
+    let width = baseWidth + left + right
+    guard width.isFinite, width >= 1 else { return nil }
+    return width
+}
+
 public let CombinedModulesSpacings: [KeyValue_t] = [
     KeyValue_t(key: "-5", value: "-5", additional: -5),
     KeyValue_t(key: "-4", value: "-4", additional: -4),

@@ -169,6 +169,8 @@
 "Show icon instead of widgets" = "Hiển thị biểu tượng thay cho tiện ích";
 "Combined details" = "Chi tiết kết hợp";
 "Spacing" = "Khoảng cách";
+"Left spacing" = "Khoảng cách trái";
+"Right spacing" = "Khoảng cách phải";
 "Choose file" = "Chọn tập tin";
 "Stress tests" = "Kiểm tra áp lực";
 "Keep the menubar items position" = "Giữ vị trí các mục thanh menu"; // qwen3.8:27b

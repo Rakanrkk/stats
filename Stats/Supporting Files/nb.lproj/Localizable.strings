@@ -169,6 +169,8 @@
 "Show icon instead of widgets" = "Vis ikon i stedet for widgeter";
 "Combined details" = "Kombinerte detaljer"; // gemma4:31b
 "Spacing" = "Mellomrom";
+"Left spacing" = "Mellomrom venstre";
+"Right spacing" = "Mellomrom høyre";
 "Choose file" = "Velg fil"; // translategemma:4b
 "Stress tests" = "Stresstester"; // gemma4:31b
 "Keep the menubar items position" = "Behold posisjonen til menylinjeelementene"; // qwen3.8:27b

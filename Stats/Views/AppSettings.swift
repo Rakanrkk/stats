@@ -30,10 +30,6 @@ class ApplicationSettings: NSStackView, NSComboBoxDelegate {
         get { Store.shared.bool(key: "CombinedModules_icon", defaultValue: false) }
         set { Store.shared.set(key: "CombinedModules_icon", value: newValue) }
     }
-    private var combinedModulesSpacing: String {
-        get { Store.shared.string(key: "CombinedModules_spacing", defaultValue: "none") }
-        set { Store.shared.set(key: "CombinedModules_spacing", value: newValue) }
-    }
     private var combinedModulesSeparator: Bool {
         get { Store.shared.bool(key: "CombinedModules_separator", defaultValue: false) }
         set { Store.shared.set(key: "CombinedModules_separator", value: newValue) }
@@ -65,7 +61,6 @@ class ApplicationSettings: NSStackView, NSComboBoxDelegate {
     private var remoteUpdatesBtn: NSSwitch?
     
     private var combinedModulesView: PreferencesSection?
-    private var combinedModulesSpacingSelector: NSComboBox?
     private var fanHelperView: PreferencesSection?
     private var remoteView: PreferencesSection?
     
@@ -131,16 +126,6 @@ class ApplicationSettings: NSStackView, NSComboBoxDelegate {
             ))
         ]))
         
-        let spacingSelector = NSComboBox()
-        spacingSelector.addItems(withObjectValues: CombinedModulesSpacings.map { localizedString($0.value) })
-        spacingSelector.stringValue = self.combinedModulesSpacing == "none" ? localizedString("None") : self.combinedModulesSpacing
-        spacingSelector.widthAnchor.constraint(equalToConstant: 80).isActive = true
-        spacingSelector.delegate = self
-        spacingSelector.target = self
-        spacingSelector.action = #selector(self.toggleCombinedModulesSpacing)
-        spacingSelector.setAccessibilityLabel(localizedString("Spacing"))
-        self.combinedModulesSpacingSelector = spacingSelector
-
         self.combinedModulesView = PreferencesSection([
             PreferencesRow(localizedString("Combined modules"), component: switchView(
                 action: #selector(self.toggleCombinedModules),
@@ -151,7 +136,9 @@ class ApplicationSettings: NSStackView, NSComboBoxDelegate {
                 state: self.combinedModulesIcon
             )),
             PreferencesRow(component: self.moduleSelector),
-            PreferencesRow(localizedString("Spacing"), component: spacingSelector),
+            PreferencesRow(localizedString("Spacing"), component: self.spacingSelector("CombinedModules_spacing", label: "Spacing")),
+            PreferencesRow(localizedString("Left spacing"), component: self.spacingSelector("CombinedModules_leftSpacing", label: "Left spacing")),
+            PreferencesRow(localizedString("Right spacing"), component: self.spacingSelector("CombinedModules_rightSpacing", label: "Right spacing")),
             PreferencesRow(localizedString("Separator"), component: switchView(
                 action: #selector(self.toggleCombinedModulesSeparator),
                 state: self.combinedModulesSeparator
@@ -390,9 +377,23 @@ class ApplicationSettings: NSStackView, NSComboBoxDelegate {
         NotificationCenter.default.post(name: .toggleOneView, object: nil, userInfo: nil)
     }
     
+    private func spacingSelector(_ key: String, label: String) -> NSComboBox {
+        let selector = NSComboBox()
+        selector.addItems(withObjectValues: CombinedModulesSpacings.map { localizedString($0.value) })
+        let value = Store.shared.string(key: key, defaultValue: "none")
+        selector.stringValue = value == "none" ? localizedString("None") : value
+        selector.widthAnchor.constraint(equalToConstant: 80).isActive = true
+        selector.delegate = self
+        selector.target = self
+        selector.action = #selector(self.toggleCombinedModulesSpacing(_:))
+        selector.setAccessibilityLabel(localizedString(label))
+        selector.identifier = NSUserInterfaceItemIdentifier(key)
+        return selector
+    }
+
     private func updateCombinedModulesSettings() {
         self.combinedModulesView?.setRowVisibility(1, newState: self.combinedModulesState)
-        for row in 2...5 {
+        for row in 2...7 {
             self.combinedModulesView?.setRowVisibility(row, newState: self.combinedModulesState && !self.combinedModulesIcon)
         }
     }
@@ -404,22 +405,24 @@ class ApplicationSettings: NSStackView, NSComboBoxDelegate {
     }
     
     @objc private func toggleCombinedModulesSpacing(_ sender: NSComboBox) {
+        guard let key = sender.identifier?.rawValue else { return }
         let input = sender.stringValue.trimmingCharacters(in: .whitespacesAndNewlines)
-        let key = input == localizedString("None") ? "none" : input
-        guard let spacing = combinedModulesSpacingValue(from: key) else {
-            sender.stringValue = self.combinedModulesSpacing == "none" ? localizedString("None") : self.combinedModulesSpacing
+        let inputKey = input == localizedString("None") ? "none" : input
+        guard let spacing = combinedModulesSpacingValue(from: inputKey) else {
+            let value = Store.shared.string(key: key, defaultValue: "none")
+            sender.stringValue = value == "none" ? localizedString("None") : value
             NSSound.beep()
             return
         }
-        let value = key == "none" ? "none" : String(spacing)
-        self.combinedModulesSpacing = value
-        sender.stringValue = key == "none" ? localizedString("None") : value
+        let value = inputKey == "none" ? "none" : String(spacing)
+        Store.shared.set(key: key, value: value)
+        sender.stringValue = inputKey == "none" ? localizedString("None") : value
         NotificationCenter.default.post(name: .moduleRearrange, object: nil, userInfo: nil)
     }
 
     func comboBoxSelectionDidChange(_ notification: Notification) {
         guard let sender = notification.object as? NSComboBox,
-              sender === self.combinedModulesSpacingSelector,
+              sender.identifier != nil,
               sender.indexOfSelectedItem >= 0 else { return }
         sender.stringValue = sender.itemObjectValue(at: sender.indexOfSelectedItem) as? String ?? sender.stringValue
         self.toggleCombinedModulesSpacing(sender)
@@ -427,7 +430,7 @@ class ApplicationSettings: NSStackView, NSComboBoxDelegate {
 
     func controlTextDidEndEditing(_ notification: Notification) {
         guard let sender = notification.object as? NSComboBox,
-              sender === self.combinedModulesSpacingSelector else { return }
+              sender.identifier != nil else { return }
         self.toggleCombinedModulesSpacing(sender)
     }
     

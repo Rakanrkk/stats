@@ -169,6 +169,8 @@
 "Show icon instead of widgets" = "Zobraziť ikonu namiesto widgetov";
 "Combined details" = "Kombinované detaily"; // gemma4:31b
 "Spacing" = "Rozostup"; // translategemma:4b
+"Left spacing" = "Rozostup vľavo";
+"Right spacing" = "Rozostup vpravo";
 "Choose file" = "Vybrať súbor"; // gemma4:31b
 "Stress tests" = "Stresové testy"; // gemma4:31b
 "Keep the menubar items position" = "Udržiavať polohu položiek lišty menu"; // qwen3.8:27b

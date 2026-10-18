@@ -169,6 +169,8 @@
 "Show icon instead of widgets" = "위젯 대신 아이콘 표시";
 "Combined details" = "전체 세부 정보";
 "Spacing" = "간격";
+"Left spacing" = "왼쪽 간격";
+"Right spacing" = "오른쪽 간격";
 "Choose file" = "파일 선택";
 "Stress tests" = "스트레스 테스트 진행하기";
 "Keep the menubar items position" = "메뉴바 항목 위치 유지"; // qwen3.8:27b
