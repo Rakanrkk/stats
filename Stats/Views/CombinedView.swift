@@ -24,7 +24,7 @@ internal class CombinedView: NSObject, NSGestureRecognizerDelegate {
         Store.shared.bool(key: "CombinedModules_icon", defaultValue: false)
     }
     private var spacing: CGFloat {
-        CGFloat(Int(Store.shared.string(key: "CombinedModules_spacing", defaultValue: "")) ?? 0)
+        CGFloat(combinedModulesSpacingValue(from: Store.shared.string(key: "CombinedModules_spacing", defaultValue: "none")) ?? 0)
     }
     private var separator: Bool {
         Store.shared.bool(key: "CombinedModules_separator", defaultValue: false)
@@ -105,20 +105,23 @@ internal class CombinedView: NSObject, NSGestureRecognizerDelegate {
         
         let visibleModules = self.activeModules.filter({ !$0.menuBar.activeWidgets.isEmpty })
         var w: CGFloat = 0
+        var width: CGFloat = 0
         visibleModules.enumerated().forEach { (i, m) in
             if i != 0 {
-                w += self.spacing
+                w = max(0, w + self.spacing)
                 if self.separator {
                     self.view.addSubview(SeparatorLineView(frame: NSRect(x: w, y: 3, width: 1, height: Constants.Widget.height-6)))
-                    w += 3 + self.spacing
+                    width = max(width, w + 1)
+                    w = max(0, w + 3 + self.spacing)
                 }
             }
             self.view.addSubview(m.menuBar.view)
             m.menuBar.view.setFrameOrigin(NSPoint(x: w, y: 0))
             w += m.menuBar.view.frame.width
+            width = max(width, w)
         }
-        self.view.setFrameSize(NSSize(width: w, height: self.view.frame.height))
-        self.menuBarItem?.length = w
+        self.view.setFrameSize(NSSize(width: width, height: self.view.frame.height))
+        self.menuBarItem?.length = width
     }
     
     // call when popup appear/disappear
