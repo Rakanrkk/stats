@@ -65,8 +65,22 @@ public let TemperatureUnits: [KeyValue_t] = [
     KeyValue_t(key: "fahrenheit", value: "Fahrenheit", additional: UnitTemperature.fahrenheit)
 ]
 
+public func combinedModulesSpacingValue(from value: String) -> Double? {
+    let value = value.trimmingCharacters(in: .whitespacesAndNewlines)
+    if value == "none" { return 0 }
+    guard let spacing = Double(value.replacingOccurrences(of: ",", with: ".")),
+          spacing.isFinite else { return nil }
+    return spacing
+}
+
 public let CombinedModulesSpacings: [KeyValue_t] = [
+    KeyValue_t(key: "-5", value: "-5", additional: -5),
+    KeyValue_t(key: "-4", value: "-4", additional: -4),
+    KeyValue_t(key: "-3", value: "-3", additional: -3),
+    KeyValue_t(key: "-2", value: "-2", additional: -2),
+    KeyValue_t(key: "-1", value: "-1", additional: -1),
     KeyValue_t(key: "none", value: "None"),
+    KeyValue_t(key: "0", value: "0", additional: 0),
     KeyValue_t(key: "1", value: "1", additional: 1),
     KeyValue_t(key: "2", value: "2", additional: 2),
     KeyValue_t(key: "3", value: "3", additional: 3),

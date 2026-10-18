@@ -13,6 +13,26 @@ import XCTest
 import Kit
 
 class KitTests: XCTestCase {
+    func testCombinedModulesSpacing() {
+        let values: [(String, Double)] = [
+            ("none", 0), ("0", 0), ("1", 1), ("8", 8),
+            ("-5", -5), ("-8", -8), ("-10.25", -10.25),
+            ("12.5", 12.5), (" -3.5 ", -3.5), ("-2,75", -2.75)
+        ]
+        for (input, expected) in values {
+            XCTAssertEqual(combinedModulesSpacingValue(from: input), expected, input)
+        }
+        for option in CombinedModulesSpacings {
+            XCTAssertNotNil(combinedModulesSpacingValue(from: option.key), option.key)
+        }
+    }
+
+    func testCombinedModulesSpacingInvalidInput() {
+        for input in ["", " ", "abc", "1.2.3", "NaN", "inf", "-inf", "1e309"] {
+            XCTAssertNil(combinedModulesSpacingValue(from: input), input)
+        }
+    }
+
     func testIsNewestVersion_release() throws {
         XCTAssertFalse(isNewestVersion(currentVersion: "v2.11.0", latestVersion: "v2.11.0"))
         XCTAssertTrue(isNewestVersion(currentVersion: "v2.11.0", latestVersion: "v2.11.1"))

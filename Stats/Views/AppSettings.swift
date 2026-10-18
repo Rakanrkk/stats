@@ -12,7 +12,7 @@
 import Cocoa
 import Kit
 
-class ApplicationSettings: NSStackView {
+class ApplicationSettings: NSStackView, NSComboBoxDelegate {
     private var updateIntervalValue: String {
         Store.shared.string(key: "update-interval", defaultValue: AppUpdateInterval.silent.rawValue)
     }
@@ -65,6 +65,7 @@ class ApplicationSettings: NSStackView {
     private var remoteUpdatesBtn: NSSwitch?
     
     private var combinedModulesView: PreferencesSection?
+    private var combinedModulesSpacingSelector: NSComboBox?
     private var fanHelperView: PreferencesSection?
     private var remoteView: PreferencesSection?
     
@@ -130,6 +131,16 @@ class ApplicationSettings: NSStackView {
             ))
         ]))
         
+        let spacingSelector = NSComboBox()
+        spacingSelector.addItems(withObjectValues: CombinedModulesSpacings.map { localizedString($0.value) })
+        spacingSelector.stringValue = self.combinedModulesSpacing == "none" ? localizedString("None") : self.combinedModulesSpacing
+        spacingSelector.widthAnchor.constraint(equalToConstant: 80).isActive = true
+        spacingSelector.delegate = self
+        spacingSelector.target = self
+        spacingSelector.action = #selector(self.toggleCombinedModulesSpacing)
+        spacingSelector.setAccessibilityLabel(localizedString("Spacing"))
+        self.combinedModulesSpacingSelector = spacingSelector
+
         self.combinedModulesView = PreferencesSection([
             PreferencesRow(localizedString("Combined modules"), component: switchView(
                 action: #selector(self.toggleCombinedModules),
@@ -140,11 +151,7 @@ class ApplicationSettings: NSStackView {
                 state: self.combinedModulesIcon
             )),
             PreferencesRow(component: self.moduleSelector),
-            PreferencesRow(localizedString("Spacing"), component: selectView(
-                action: #selector(self.toggleCombinedModulesSpacing),
-                items: CombinedModulesSpacings,
-                selected: self.combinedModulesSpacing
-            )),
+            PreferencesRow(localizedString("Spacing"), component: spacingSelector),
             PreferencesRow(localizedString("Separator"), component: switchView(
                 action: #selector(self.toggleCombinedModulesSeparator),
                 state: self.combinedModulesSeparator
@@ -396,10 +403,32 @@ class ApplicationSettings: NSStackView {
         NotificationCenter.default.post(name: .moduleRearrange, object: nil, userInfo: nil)
     }
     
-    @objc private func toggleCombinedModulesSpacing(_ sender: NSMenuItem) {
-        guard let key = sender.representedObject as? String else { return }
-        self.combinedModulesSpacing = key
+    @objc private func toggleCombinedModulesSpacing(_ sender: NSComboBox) {
+        let input = sender.stringValue.trimmingCharacters(in: .whitespacesAndNewlines)
+        let key = input == localizedString("None") ? "none" : input
+        guard let spacing = combinedModulesSpacingValue(from: key) else {
+            sender.stringValue = self.combinedModulesSpacing == "none" ? localizedString("None") : self.combinedModulesSpacing
+            NSSound.beep()
+            return
+        }
+        let value = key == "none" ? "none" : String(spacing)
+        self.combinedModulesSpacing = value
+        sender.stringValue = key == "none" ? localizedString("None") : value
         NotificationCenter.default.post(name: .moduleRearrange, object: nil, userInfo: nil)
+    }
+
+    func comboBoxSelectionDidChange(_ notification: Notification) {
+        guard let sender = notification.object as? NSComboBox,
+              sender === self.combinedModulesSpacingSelector,
+              sender.indexOfSelectedItem >= 0 else { return }
+        sender.stringValue = sender.itemObjectValue(at: sender.indexOfSelectedItem) as? String ?? sender.stringValue
+        self.toggleCombinedModulesSpacing(sender)
+    }
+
+    func controlTextDidEndEditing(_ notification: Notification) {
+        guard let sender = notification.object as? NSComboBox,
+              sender === self.combinedModulesSpacingSelector else { return }
+        self.toggleCombinedModulesSpacing(sender)
     }
     
     @objc private func toggleCombinedModulesSeparator(_ sender: NSButton) {
