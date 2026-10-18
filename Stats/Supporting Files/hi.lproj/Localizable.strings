@@ -169,6 +169,8 @@
 "Show icon instead of widgets" = "विजेट के बजाय आइकन दिखाएँ";
 "Combined details" = "संयुक्त विवरण"; // translategemma:4b
 "Spacing" = "स्पेसिंग";
+"Left spacing" = "बाईं स्पेसिंग";
+"Right spacing" = "दाईं स्पेसिंग";
 "Choose file" = "फ़ाइल चुनें"; // translategemma:4b
 "Stress tests" = "तनाव परीक्षण"; // translategemma:4b
 "Keep the menubar items position" = "मेनबार आइटमों की स्थिति बनाए रखें"; // qwen3.8:27b

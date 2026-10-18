@@ -26,6 +26,12 @@ internal class CombinedView: NSObject, NSGestureRecognizerDelegate {
     private var spacing: CGFloat {
         CGFloat(combinedModulesSpacingValue(from: Store.shared.string(key: "CombinedModules_spacing", defaultValue: "none")) ?? 0)
     }
+    private var leftSpacing: CGFloat {
+        CGFloat(combinedModulesSpacingValue(from: Store.shared.string(key: "CombinedModules_leftSpacing", defaultValue: "none")) ?? 0)
+    }
+    private var rightSpacing: CGFloat {
+        CGFloat(combinedModulesSpacingValue(from: Store.shared.string(key: "CombinedModules_rightSpacing", defaultValue: "none")) ?? 0)
+    }
     private var separator: Bool {
         Store.shared.bool(key: "CombinedModules_separator", defaultValue: false)
     }
@@ -120,8 +126,19 @@ internal class CombinedView: NSObject, NSGestureRecognizerDelegate {
             w += m.menuBar.view.frame.width
             width = max(width, w)
         }
-        self.view.setFrameSize(NSSize(width: width, height: self.view.frame.height))
-        self.menuBarItem?.length = width
+
+        // outer spacing shifts everything at once: it pads (or trims, when negative) the edges
+        // without changing the gaps between modules; unusable values keep the plain layout
+        guard let outerWidth = visibleModules.isEmpty ? nil : combinedModulesOuterWidth(baseWidth: width, left: self.leftSpacing, right: self.rightSpacing) else {
+            self.view.setFrameSize(NSSize(width: width, height: self.view.frame.height))
+            self.menuBarItem?.length = width
+            return
+        }
+        if self.leftSpacing != 0 {
+            self.view.subviews.forEach({ $0.setFrameOrigin(NSPoint(x: $0.frame.minX + self.leftSpacing, y: $0.frame.minY)) })
+        }
+        self.view.setFrameSize(NSSize(width: outerWidth, height: self.view.frame.height))
+        self.menuBarItem?.length = outerWidth
     }
     
     // call when popup appear/disappear

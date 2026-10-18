@@ -169,6 +169,8 @@
 "Show icon instead of widgets" = "إظهار الأيقونة بدلاً من عناصر الواجهة";
 "Combined details" = "تفاصيل مجمعة"; // translategemma:4b
 "Spacing" = "التباعد";
+"Left spacing" = "التباعد الأيسر";
+"Right spacing" = "التباعد الأيمن";
 "Choose file" = "اختيار ملف"; // gemma4:31b
 "Stress tests" = "اختبارات الإجهاد"; // gemma4:31b
 "Keep the menubar items position" = "الحفاظ على موضع عناصر شريط القائمة"; // qwen3.8:27b

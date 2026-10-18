@@ -169,6 +169,8 @@
 "Show icon instead of widgets" = "Показувати іконку замість віджетів";
 "Combined details" = "Комбіновані деталі";
 "Spacing" = "Інтервал";
+"Left spacing" = "Відступ ліворуч";
+"Right spacing" = "Відступ праворуч";
 "Choose file" = "Виберіть файл";
 "Stress tests" = "Стрес-тести";
 "Keep the menubar items position" = "Зберігати розташування елементів панелі меню"; // qwen3.8:27b

@@ -169,6 +169,8 @@
 "Show icon instead of widgets" = "উইজেটের পরিবর্তে আইকন দেখান";
 "Combined details" = "সম্মিলিত বিবরণ";
 "Spacing" = "ব্যবধান";
+"Left spacing" = "বাম ব্যবধান";
+"Right spacing" = "ডান ব্যবধান";
 "Choose file" = "ফাইল নির্বাচন করুন";
 "Stress tests" = "স্ট্রেস টেস্ট";
 "Keep the menubar items position" = "মেনুবার আইটেমগুলোর অবস্থান রক্ষা করুন"; // qwen3.8:27b

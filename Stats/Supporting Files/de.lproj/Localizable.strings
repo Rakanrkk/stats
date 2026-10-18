@@ -169,6 +169,8 @@
 "Show icon instead of widgets" = "Symbol statt Widgets anzeigen";
 "Combined details" = "Kombinierte Details";
 "Spacing" = "Abstand";
+"Left spacing" = "Linker Abstand";
+"Right spacing" = "Rechter Abstand";
 "Choose file" = "Datei auswählen";
 "Stress tests" = "Stresstests";
 "Keep the menubar items position" = "Die Position der Menüleisten-Elemente beibehalten"; // qwen3.8:27b

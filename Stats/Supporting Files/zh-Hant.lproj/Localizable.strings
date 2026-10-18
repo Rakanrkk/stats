@@ -169,6 +169,8 @@
 "Show icon instead of widgets" = "顯示圖示而非小工具";
 "Combined details" = "合併詳細資訊";
 "Spacing" = "間距";
+"Left spacing" = "左側間距";
+"Right spacing" = "右側間距";
 "Choose file" = "選擇檔案";
 "Stress tests" = "壓力測試";
 "Keep the menubar items position" = "保持選單列項目的位置"; // qwen3.8:27b

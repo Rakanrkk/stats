@@ -169,6 +169,8 @@
 "Show icon instead of widgets" = "Pokaż ikonę zamiast widżetów";
 "Combined details" = "Złączone szczegóły";
 "Spacing" = "Rozstaw";
+"Left spacing" = "Odstęp po lewej";
+"Right spacing" = "Odstęp po prawej";
 "Choose file" = "Wybrać plik";
 "Stress tests" = "Testy obciążeniowe";
 "Keep the menubar items position" = "Zachowuj pozycję elementów paska menu";

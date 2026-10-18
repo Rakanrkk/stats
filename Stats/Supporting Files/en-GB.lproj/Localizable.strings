@@ -169,6 +169,8 @@
 "Show icon instead of widgets" = "Show icon instead of widgets";
 "Combined details" = "Combined details";
 "Spacing" = "Spacing";
+"Left spacing" = "Left spacing";
+"Right spacing" = "Right spacing";
 "Choose file" = "Choose file";
 "Stress tests" = "Stress tests";
 "Keep the menubar items position" = "Keep the menubar items position";

@@ -169,6 +169,8 @@
 "Show icon instead of widgets" = "نمایش نماد به‌جای ابزارک‌ها";
 "Combined details" = "جزئیات ترکیبی"; // translategemma:4b
 "Spacing" = "فاصله"; // translategemma:4b
+"Left spacing" = "فاصله چپ";
+"Right spacing" = "فاصله راست";
 "Choose file" = "انتخاب فایل"; // gemma4:31b
 "Stress tests" = "تست‌های استرس"; // gemma4:31b
 "Keep the menubar items position" = "حفظ جایگاه عناصر نوار منو"; // qwen3.8:27b

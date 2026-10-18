@@ -33,6 +33,18 @@ class KitTests: XCTestCase {
         }
     }
 
+    func testCombinedModulesOuterWidth() {
+        XCTAssertEqual(combinedModulesOuterWidth(baseWidth: 30, left: 0, right: 0), 30)
+        XCTAssertEqual(combinedModulesOuterWidth(baseWidth: 30, left: 4, right: 2), 36)
+        XCTAssertEqual(combinedModulesOuterWidth(baseWidth: 30, left: -5, right: 0), 25)
+        XCTAssertEqual(combinedModulesOuterWidth(baseWidth: 30, left: 2.5, right: -0.5), 32)
+        XCTAssertEqual(combinedModulesOuterWidth(baseWidth: 2, left: -1, right: 0), 1)
+        XCTAssertNil(combinedModulesOuterWidth(baseWidth: 30, left: -20, right: -20))
+        XCTAssertNil(combinedModulesOuterWidth(baseWidth: 0, left: 0, right: 0))
+        XCTAssertNil(combinedModulesOuterWidth(baseWidth: .infinity, left: 0, right: 0))
+        XCTAssertNil(combinedModulesOuterWidth(baseWidth: 30, left: .nan, right: 0))
+    }
+
     func testIsNewestVersion_release() throws {
         XCTAssertFalse(isNewestVersion(currentVersion: "v2.11.0", latestVersion: "v2.11.0"))
         XCTAssertTrue(isNewestVersion(currentVersion: "v2.11.0", latestVersion: "v2.11.1"))

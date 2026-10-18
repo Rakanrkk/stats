@@ -169,6 +169,8 @@
 "Show icon instead of widgets" = "ウィジェットの代わりにアイコンを表示";
 "Combined details" = "統合された詳細"; // translategemma:4b
 "Spacing" = "間隔"; // translategemma:4b
+"Left spacing" = "左側の間隔";
+"Right spacing" = "右側の間隔";
 "Choose file" = "ファイルを選択"; // gemma4:31b
 "Stress tests" = "ストレステスト"; // translategemma:4b
 "Keep the menubar items position" = "メニューバー項目の位置を保持する"; // qwen3.8:27b

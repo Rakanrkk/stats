@@ -169,6 +169,8 @@
 "Show icon instead of widgets" = "แสดงไอคอนแทนวิดเจ็ต";
 "Combined details" = "รายละเอียดรวม"; // gemma4:31b
 "Spacing" = "ระยะห่าง"; // translategemma:4b
+"Left spacing" = "ระยะห่างด้านซ้าย";
+"Right spacing" = "ระยะห่างด้านขวา";
 "Choose file" = "เลือกไฟล์"; // translategemma:4b
 "Stress tests" = "สเตรสเทสต์"; // translategemma:4b
 "Keep the menubar items position" = "คงตำแหน่งของรายการในแถบเมนู"; // qwen3.8:27b

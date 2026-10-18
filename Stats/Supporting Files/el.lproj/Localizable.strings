@@ -169,6 +169,8 @@
 "Show icon instead of widgets" = "Εμφάνιση εικονιδίου αντί για widgets";
 "Combined details" = "Συνδυασμένες λεπτομέρειες"; // gemma4:31b
 "Spacing" = "Κενό";
+"Left spacing" = "Κενό αριστερά";
+"Right spacing" = "Κενό δεξιά";
 "Choose file" = "Επιλογή αρχείου"; // gemma4:31b
 "Stress tests" = "Δοκιμές καταπόνησης"; // gemma4:31b
 "Keep the menubar items position" = "Διατήρηση της θέσης των στοιχείων της μπάρας μενού"; // qwen3.8:27b

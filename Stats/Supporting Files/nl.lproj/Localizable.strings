@@ -169,6 +169,8 @@
 "Show icon instead of widgets" = "Toon pictogram in plaats van widgets";
 "Combined details" = "Gecombineerde details";
 "Spacing" = "Afstand"; // gemma4:31b
+"Left spacing" = "Afstand links";
+"Right spacing" = "Afstand rechts";
 "Choose file" = "Kies bestand"; // translategemma:4b
 "Stress tests" = "Stresstests"; // gemma4:26b
 "Keep the menubar items position" = "Behoud de positie van de menubalk-items"; // qwen3.8:27b
